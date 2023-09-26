@@ -15,6 +15,6 @@
 </script>
 
 <button
-  class="text-black bg-emerald-700 rounded-lg px-2 py-1 hover:text-white transition duration-200"
+  class="text-black bg-emerald-700 rounded-lg px-4 py-2 hover:text-white transition duration-200"
   on:click={signIn}>Log In</button
 >
