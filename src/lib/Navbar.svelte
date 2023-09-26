@@ -1,0 +1,39 @@
+<script lang="ts">
+  import Login from '$lib/Login.svelte';
+  import { pb, currentUser } from './pocketbase';
+</script>
+
+<nav class="bg-slate-800 text-white p-3 flex flex-row items-center justify-between px-4">
+  {#if $currentUser}
+    <p>Signed in as {$currentUser.username}</p>
+    <button
+      on:click={() => {
+        const menu = document.getElementById('usermenu');
+        if (menu) {
+          menu.classList.toggle('hidden');
+        }
+      }}
+    >
+      <img
+        src={pb.files.getUrl($currentUser, $currentUser.avatar)}
+        alt="Avatar"
+        class="w-10 h-10 rounded-full border-white border-2 p-0.5"
+      />
+    </button>
+    <div
+      id="usermenu"
+      class="absolute mt-14 mr-3 top-0 right-0 w-48 bg-slate-800 text-white border p-3 rounded shadow-md hidden"
+    >
+      <button class="pb-3 w-full text-left">Nothing button</button>
+      <hr class="pb-3" />
+      <button
+        class="w-full text-left"
+        on:click={() => {
+          pb.authStore.clear();
+        }}>Sign Out</button
+      >
+    </div>
+  {:else}
+    <Login />
+  {/if}
+</nav>
