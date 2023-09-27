@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { pb } from './pocketbase';
+  import { pb } from '../pocketbase';
 
   async function signIn() {
     const authData = await pb.collection('users').authWithOAuth2({
