@@ -1,7 +1,8 @@
 <script lang="ts">
-  import Navbar from '$lib/components/Navbar.svelte';
-  import Login from '$lib/components/Login.svelte';
-  import SetupModal from '$lib/components/SetupModal.svelte';
+  import Navbar from '$lib/components/navbar/Navbar.svelte';
+  import Login from '$lib/components/views/Login.svelte';
+  import SetupModal from '$lib/components/modals/SetupModal.svelte';
+  import UserView from '$lib/components/views/UserView.svelte';
   import { currentUser } from '$lib/pocketbase';
 </script>
 
@@ -9,7 +10,7 @@
   {#if $currentUser}
     <Navbar />
     {#if $currentUser.isSetup}
-      <h1>Welcome to the wonders of Petrik</h1>
+      <UserView />
     {:else}
       <SetupModal />
     {/if}

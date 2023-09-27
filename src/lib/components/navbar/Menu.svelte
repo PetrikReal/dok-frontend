@@ -1,8 +1,8 @@
 <script lang="ts">
   import MenuButton from './MenuButton.svelte';
-  import SettingsModal from './SettingsModal.svelte';
+  import SettingsModal from '../modals/SettingsModal.svelte';
 
-  import { pb, currentUser } from '../pocketbase';
+  import { pb, currentUser } from '../../pocketbase';
 
   import 'iconify-icon';
   import { Burger, Menu } from '@svelteuidev/core';
@@ -20,11 +20,13 @@
     class="border-white border-2 p-0.5 rounded-full flex flex-row items-center"
     type="button"
   >
-    <img
-      src={pb.files.getUrl($currentUser, $currentUser.avatar)}
-      alt="Avatar"
-      class="w-10 h-10 rounded-full p-0.5"
-    />
+    {#if $currentUser}
+      <img
+        src={pb.files.getUrl($currentUser, $currentUser.avatar)}
+        alt="Avatar"
+        class="w-10 h-10 rounded-full p-0.5"
+      />
+    {/if}
     <Burger class="mr-1" color="#fff" size="sm" {opened} />
   </button>
   <Menu
