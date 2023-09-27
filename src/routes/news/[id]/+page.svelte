@@ -6,31 +6,21 @@
   import { goto } from '$app/navigation';
 
   import Navbar from '$lib/components/navbar/Navbar.svelte';
+    import NewsCard from '$lib/components/NewsCard.svelte';
 
-  onMount(() => {
+  onMount(async () => {
     if (!$currentUser) {
       goto('/');
     }
+
+    const news = await pb.collection('news').getOne($page.params.id);
+    console.log(news);
   });
-
-  // pb.collection('news')
-  //   .getOne($page.params.id)
-  //   .then((res) => {
-  //     news = res;
-  //     console.log(res);
-  //   });
-
-  try {
-    const news = pb.collection('news').getOne($page.params.id);
-  } catch (error) {
-    console.log(error);
-  }
 </script>
 
 <main>
   {#if $currentUser}
     <Navbar />
-    <div class="" />
   {:else}
     <Login />
   {/if}
