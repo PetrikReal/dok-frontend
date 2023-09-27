@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Modal } from '@svelteuidev/core';
+  import { Modal, createStyles } from '@svelteuidev/core';
   import { pb, currentUser } from '$lib/pocketbase';
 
   let opened = true;
@@ -8,14 +8,20 @@
   let fullName = '';
   let userName = '';
 
+  let usernameError: string = '';
+
   const checkInputs = () => {
-    console.log('checking');
+    const userIsAlpha = /^[a-z0-9]+$/i.test(userName);
 
-    const isAlpha = /^[a-z0-9]+$/i.test(userName);
+    const userLengthConstraint = userName.length >= 3 && userName.length <= 16;
 
-    const lengthConstraint = userName.length >= 3 && userName.length <= 16;
+    usernameError = !userIsAlpha
+      ? 'csak betűket és számokat tartalmazhat!'
+      : !userLengthConstraint
+      ? '3 és 16 karakter között kell lennie!'
+      : '';
 
-    disabled = !(fullName.length <= 30) || !lengthConstraint || !isAlpha;
+    disabled = !(fullName.length <= 30) || !userLengthConstraint || !userIsAlpha;
     console.log(disabled);
   };
 
@@ -33,7 +39,7 @@
 
 <Modal {opened} withCloseButton={false}>
   <p class="text-center text-xl mb-3">Végső simítások</p>
-  <p class="mb-3 text-justify">Még nincs kész a profilod, adj meg pár adatot!</p>
+  <p class="mb-3 text-center">Még nincs kész a profilod, adj meg pár adatot!</p>
 
   <label for="fullName">Teljes név</label>
   <input
@@ -45,11 +51,14 @@
     on:input={checkInputs}
   />
 
-  <label for="fullName">Felhasználónév</label>
+  <div class="flex flex-col">
+    <label for="userName">Felhasználónév</label>
+    <label for="userName" class="text-red-500">{usernameError}</label>
+  </div>
   <input
     id="userName"
     type="text"
-    placeholder=">3 karakter"
+    placeholder="3-16 karakter"
     class="bg-zinc-700 w-full mb-2 p-2 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-emerald-600"
     bind:value={userName}
     on:input={checkInputs}

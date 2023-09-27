@@ -15,7 +15,7 @@
 </script>
 
 <div class="flex flex-col justify-center items-center h-screen">
-  <h1 class="mb-3 text-2xl">App</h1>
+  <h1 class="mb-3 text-2xl">DÖKWeb</h1>
   <button
     on:click={signIn}
     class="flex items-center p-3 border-slate-100 border-2 rounded-lg transition hover:bg-gray-500"

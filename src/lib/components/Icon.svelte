@@ -11,5 +11,5 @@
     p-1
     style="font-size: 32px"
   />
-  <h1 class="text-xl font-bold">App</h1>
+  <h1 class="text-xl font-bold">DÖKWeb</h1>
 </div>

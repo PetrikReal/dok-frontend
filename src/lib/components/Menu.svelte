@@ -1,10 +1,12 @@
 <script lang="ts">
   import MenuButton from './MenuButton.svelte';
+  import SettingsModal from './SettingsModal.svelte';
 
   import { pb, currentUser } from '../pocketbase';
 
   import 'iconify-icon';
   import { Burger, Menu } from '@svelteuidev/core';
+
   let opened = false;
   let menu: typeof Menu;
 </script>
@@ -25,7 +27,6 @@
     />
     <Burger class="mr-1" color="#fff" size="sm" {opened} />
   </button>
-  <!-- TODO: make this dark mode -->
   <Menu
     on:close={() => {
       opened = false;
@@ -34,10 +35,17 @@
   >
     <div class="" slot="control" />
 
-    <p class="p-1 ml-1 w-full flex flex-row text-md">Nigga</p>
-    <MenuButton icon="solar:black-hole-bold" text="Summon niggers" />
+    <p class="p-1 w-full text-md">
+      Szia,<br />{$currentUser.name}
+    </p>
     <hr class="my-1" />
-    <MenuButton icon="fluent:settings-24-regular" text="Settings" />
+    <MenuButton
+      icon="fluent:settings-24-regular"
+      text="Settings"
+      onClick={() => {
+        new SettingsModal({ target: document.body });
+      }}
+    />
     <MenuButton
       icon="uil:signout"
       text="Sign Out"
