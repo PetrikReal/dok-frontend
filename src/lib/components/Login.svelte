@@ -18,9 +18,9 @@
   <h1 class="mb-3 text-2xl">App</h1>
   <button
     on:click={signIn}
-    class="flex items-center bg-slate-600 p-3 border-slate-100 border-2 rounded-lg transition hover:bg-slate-500"
+    class="flex items-center p-3 border-slate-100 border-2 rounded-lg transition hover:bg-gray-500"
   >
     <iconify-icon icon="bi:microsoft" class="mr-2" />
-    <h2>Sign in with Mikrószaft</h2>
+    <h2>Sign in</h2>
   </button>
 </div>

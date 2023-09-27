@@ -3,6 +3,6 @@
   import { SvelteUIProvider } from '@svelteuidev/core';
 </script>
 
-<SvelteUIProvider>
+<SvelteUIProvider withGlobalStyles themeObserver={'dark'}>
   <slot />
 </SvelteUIProvider>
