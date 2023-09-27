@@ -1,25 +1,37 @@
 <script lang="ts">
-  import { pb } from '$lib/pocketbase';
+  import { pb, currentUser } from '$lib/pocketbase';
   import { page } from '$app/stores';
-  import type { RecordModel } from 'pocketbase';
+  import Login from '$lib/components/views/Login.svelte';
+  import { onMount } from 'svelte';
+  import { goto } from '$app/navigation';
 
   import Navbar from '$lib/components/navbar/Navbar.svelte';
 
-  let news: RecordModel;
+  onMount(() => {
+    if (!$currentUser) {
+      goto('/');
+    }
+  });
 
-  pb.collection('news')
-    .getOne($page.params.id)
-    .then((res) => {
-      news = res;
-      console.log(res);
-    });
+  // pb.collection('news')
+  //   .getOne($page.params.id)
+  //   .then((res) => {
+  //     news = res;
+  //     console.log(res);
+  //   });
 
-  console.log(news);
+  try {
+    const news = pb.collection('news').getOne($page.params.id);
+  } catch (error) {
+    console.log(error);
+  }
 </script>
 
 <main>
-  <Navbar />
-  <div class="">
-    {news}
-  </div>
+  {#if $currentUser}
+    <Navbar />
+    <div class="" />
+  {:else}
+    <Login />
+  {/if}
 </main>
