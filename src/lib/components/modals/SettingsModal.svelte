@@ -22,6 +22,9 @@
     opened = false;
   };
 
+  // TODO: Let user close modal without uploading avatar
+  // TODO: Let user close modal without editing name
+
   let files: FileList;
 
   let avatarPreview: string = $currentUser.avatar
