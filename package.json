@@ -32,6 +32,10 @@
   },
   "type": "module",
   "dependencies": {
+    "@svelteuidev/composables": "^0.15.3",
+    "@svelteuidev/core": "^0.15.3",
+    "@svelteuidev/motion": "^0.15.3",
+    "iconify-icon": "^1.0.8",
     "pocketbase": "^0.18.0"
   }
 }

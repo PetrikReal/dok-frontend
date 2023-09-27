@@ -1,5 +1,8 @@
 <script lang="ts">
   import '../app.css';
+  import { SvelteUIProvider } from '@svelteuidev/core';
 </script>
 
-<slot />
+<SvelteUIProvider>
+  <slot />
+</SvelteUIProvider>

@@ -14,7 +14,13 @@
   }
 </script>
 
-<button
-  class="text-black bg-emerald-700 rounded-lg px-4 py-2 hover:text-white transition duration-200"
-  on:click={signIn}>Log In</button
->
+<div class="flex flex-col justify-center items-center h-screen">
+  <h1 class="mb-3 text-2xl">App</h1>
+  <button
+    on:click={signIn}
+    class="flex items-center bg-slate-600 p-3 border-slate-100 border-2 rounded-lg transition hover:bg-slate-500"
+  >
+    <iconify-icon icon="bi:microsoft" class="mr-2" />
+    <h2>Sign in with Mikrószaft</h2>
+  </button>
+</div>
