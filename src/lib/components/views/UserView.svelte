@@ -2,6 +2,7 @@
   import NewsCard from '../NewsCard.svelte';
   import { pb } from '$lib/pocketbase';
   import type { RecordModel } from 'pocketbase';
+  import { Container } from '@svelteuidev/core';
   let news: RecordModel[] = [];
   pb.collection('news')
     .getFullList({ sort: '-created' })
@@ -11,8 +12,8 @@
 </script>
 
 <main class="">
-  <div class="grid grid-cols-2 grid-rows-1 gap-3 m-3">
-    <div class="bg-zinc-800 p-2 rounded-lg text-white">
+  <div class="grid grid-cols-2 grid-rows-1 gap-3 m-3 h-screen">
+    <div class="bg-zinc-800 p-2 rounded-lg text-white overflow-y-auto"> <!-- Adjust max-height as needed -->
       <h1 class="text-xl text-center mb-2">Hírek</h1>
       {#each news as item}
         <NewsCard
