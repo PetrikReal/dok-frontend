@@ -16,7 +16,7 @@
 
 <main class="flex justify-center">
   <div class="max-w-5xl">
-    <div class="bg-zinc-800 p-4 my-5 rounded-lg text-white overflow-y-auto">
+    <div class="bg-zinc-800 p-4 my-5 rounded-lg text-white overflow-auto" style="height: 40rem">
       {#each news as item}
       <NewsCard
       title={item.title}
@@ -30,5 +30,4 @@
       {/each}
     </div>
   </div>
-  <footer>&copy; </footer>
 </main>
