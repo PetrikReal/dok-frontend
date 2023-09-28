@@ -4,11 +4,19 @@
   import type { RecordModel } from 'pocketbase';
   import { Container } from '@svelteuidev/core';
   let news: RecordModel[] = [];
+  let assigned_tasks: RecordModel[] = [];
   pb.collection('news')
     .getFullList({ sort: '-created' })
     .then((res: RecordModel[]) => {
       news = res;
     });
+  const fetch_assigned_tasks = async () => {
+    assigned_tasks = await pb.collection('tasks').getFullList({
+      filter: `assigned_to.id ?= "${pb.authStore.model.id}"`
+    })
+    console.log(assigned_tasks)
+  }
+  
 </script>
 
 <main class="">
@@ -29,9 +37,23 @@
         <div class="h-3/6">
           <h1 class="text-xl text-center mb-2">Feladatok</h1>
         </div>
+        {#await fetch_assigned_tasks()}
+          <p>loading...</p>
+        {:then}
         <div class="h-3/6">
           <h1 class="text-xl text-center mb-2">Feladataim</h1>
+          
+          <div class="flex flex-col">
+            {#each assigned_tasks as task}
+              <div>
+                <h1>{task.id}</h1>
+              </div>
+            {/each}
+          </div>
         </div>
+        {:catch error}
+        <p>Cannot get your tasks :c ERROR: {error}</p>
+        {/await}
       </div>
     </div>
   </div>
