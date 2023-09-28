@@ -1,8 +1,9 @@
 <script lang="ts">
+  import TaskCard from '../TaskCard.svelte';
   import NewsCard from '../NewsCard.svelte';
   import { pb } from '$lib/pocketbase';
   import type { RecordModel } from 'pocketbase';
-  import { Container } from '@svelteuidev/core';
+    import Icon from '../navbar/Icon.svelte';
   let news: RecordModel[] = [];
   let assigned_tasks: RecordModel[] = [];
   pb.collection('news')
@@ -13,15 +14,14 @@
   const fetch_assigned_tasks = async () => {
     assigned_tasks = await pb.collection('tasks').getFullList({
       filter: `assigned_to.id ?= "${pb.authStore.model.id}"`
-    })
-    console.log(assigned_tasks)
-  }
-  
+    });
+  };
 </script>
 
 <main class="">
   <div class="grid grid-cols-2 grid-rows-1 gap-3 m-3 h-screen">
-    <div class="bg-zinc-800 p-2 rounded-lg text-white overflow-y-auto"> <!-- Adjust max-height as needed -->
+    <div class="bg-zinc-800 p-2 rounded-lg text-white overflow-y-auto">
+      <!-- Adjust max-height as needed -->
       <h1 class="text-xl text-center mb-2">Hírek</h1>
       {#each news as item}
         <NewsCard
@@ -40,19 +40,17 @@
         {#await fetch_assigned_tasks()}
           <p>loading...</p>
         {:then}
-        <div class="h-3/6">
-          <h1 class="text-xl text-center mb-2">Feladataim</h1>
-          
-          <div class="flex flex-col">
-            {#each assigned_tasks as task}
-              <div>
-                <h1>{task.id}</h1>
-              </div>
-            {/each}
+          <div class="h-3/6">
+            <h1 class="text-xl text-center mb-2">Feladataim</h1>
+
+            <div class="flex flex-col">
+              {#each assigned_tasks as task}
+                <TaskCard title={task.title} body={task.body} due_date={task.due_date} id={task.id}></TaskCard>
+              {/each}
+            </div>
           </div>
-        </div>
         {:catch error}
-        <p>Cannot get your tasks :c ERROR: {error}</p>
+          <p>Cannot get your tasks :c ERROR: {error}</p>
         {/await}
       </div>
     </div>
