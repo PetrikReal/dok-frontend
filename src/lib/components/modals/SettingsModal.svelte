@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Modal } from '@svelteuidev/core';
   import { pb, currentUser } from '$lib/pocketbase';
+  import 'iconify-icon';
 
   let opened = true;
   let disabled = false;
@@ -41,6 +42,7 @@
 
 <Modal {opened} title="Felhasználói beállítások" withCloseButton={false}>
   <label for="fullName">Teljes név</label>
+
   <input
     id="fullName"
     type="text"
@@ -80,11 +82,22 @@
     };
   </script>
 
-  <button
-    class="bg-emerald-600 disabled:bg-emerald-950 disabled:hover:bg-emerald-950 disabled:cursor-not-allowed text-white p-2 rounded-lg mt-3 w-full transition hover:bg-emerald-700"
-    on:click={updateUserInfo}
-    {disabled}
-  >
-    Mentés
-  </button>
+  <div class="flex flex-row gap-3">
+    <button
+      class="bg-rose-600 disabled:bg-emerald-950 disabled:hover:bg-emerald-950 disabled:cursor-not-allowed text-white p-2 rounded-lg mt-3 w-full transition hover:bg-rose-700"
+      on:click={() => {
+        opened = false;
+      }}
+    >
+      Mégse
+    </button>
+
+    <button
+      class="bg-emerald-600 disabled:bg-emerald-950 disabled:hover:bg-emerald-950 disabled:cursor-not-allowed text-white p-2 rounded-lg mt-3 w-full transition hover:bg-emerald-700"
+      on:click={updateUserInfo}
+      {disabled}
+    >
+      Mentés
+    </button>
+  </div>
 </Modal>

@@ -43,14 +43,14 @@
     <hr class="my-1" />
     <MenuButton
       icon="fluent:settings-24-regular"
-      text="Settings"
+      text="Beállítások"
       onClick={() => {
         new SettingsModal({ target: document.body });
       }}
     />
     <MenuButton
       icon="uil:signout"
-      text="Sign Out"
+      text="Kijelentkezés"
       classnames="text-red-500"
       onClick={() => {
         pb.authStore.clear();
