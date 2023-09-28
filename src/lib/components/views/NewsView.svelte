@@ -2,28 +2,33 @@
   import NewsCard from '../NewsCard.svelte';
   import { pb } from '$lib/pocketbase';
   import type { RecordModel } from 'pocketbase';
-  import Icon from '../navbar/Icon.svelte';
-  let news: RecordModel[] = [];
-  pb.collection('news')
-    .getFullList({ sort: '-created' })
-    .then((res: RecordModel[]) => {
-      news = res;
-    });
+  import type { PageData } from '../../../routes/$types';
+  // let news: RecordModel[] = [];
+  // pb.collection('news')
+  //   .getFullList({ sort: '-created' })
+  //   .then((res: RecordModel[]) => {
+  //     news = res;
+  //   });
+  export let data: PageData;
+  const news: RecordModel[] = data.news;
+  console.log(news)
 </script>
 
-<main class="">
-  <div class="grid grid-cols-2 grid-rows-1 gap-3 m-3 h-screen">
-    <div class="bg-zinc-800 p-2 rounded-lg text-white overflow-y-auto">
-      <!-- Adjust max-height as needed -->
-      <h1 class="text-xl text-center mb-2">Hírek</h1>
+<main class="flex justify-center">
+  <div class="max-w-5xl">
+    <div class="bg-zinc-800 p-4 my-5 rounded-lg text-white overflow-y-auto">
       {#each news as item}
-        <NewsCard
-          title={item.title}
-          body={item.body}
-          image={pb.files.getUrl(item, item.image)}
-          href={item.id}
-        />
+      <NewsCard
+      title={item.title}
+      body={item.body}
+      image={item.image}
+      href={item.id}
+      author={item.author}
+      created={item.created}
+      authorAvatar={item.authorAvatar}
+      />
       {/each}
     </div>
   </div>
+  <footer>&copy; </footer>
 </main>

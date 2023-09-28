@@ -4,13 +4,16 @@
   import SetupModal from '$lib/components/modals/SetupModal.svelte';
   import NewsView from '$lib/components/views/NewsView.svelte';
   import { currentUser } from '$lib/pocketbase';
+
+  import type { PageData } from './$types';
+  export let data: PageData;
 </script>
 
 <div class="w-full h-full">
   {#if $currentUser}
     <Navbar />
     {#if $currentUser.isSetup}
-      <NewsView />
+      <NewsView data={data}/>
     {:else}
       <SetupModal />
     {/if}
