@@ -15,6 +15,6 @@ export const load = (async ({ params }) => {
     body: news.body,
     author: author_name,
     image: pb.files.getUrl(news, news.image),
-    created: formattedCreatedDate, // Use the formatted date
+    created: formattedCreatedDate // Use the formatted date
   };
 }) satisfies PageServerLoad;

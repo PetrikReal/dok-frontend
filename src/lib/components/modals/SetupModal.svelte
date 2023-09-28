@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Modal, createStyles } from '@svelteuidev/core';
+  import { Modal } from '@svelteuidev/core';
   import { pb, currentUser } from '$lib/pocketbase';
 
   let opened = true;

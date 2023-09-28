@@ -20,6 +20,7 @@
           body={item.body}
           image={pb.files.getUrl(item, item.image)}
           href={item.id}
+          author={item.author}
         />
       {/each}
     </div>

@@ -3,7 +3,7 @@
   export let body: string;
   export let image: string;
   export let href: string;
-  export let author: string = 'Anonymous';
+  export let author: string;
 
   href = `/news/${href}`;
 </script>
