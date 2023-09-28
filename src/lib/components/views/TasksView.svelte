@@ -11,6 +11,7 @@
 </script>
 
 <div>
+  <h1 class="text-xl text-center mb-2">Feladatok</h1>
   {#await fetch_assigned_tasks()}
     <p>loading...</p>
   {:then}

@@ -25,12 +25,5 @@
         />
       {/each}
     </div>
-    <div class="bg-zinc-800 p-2 rounded-lg text-white">
-      <div class="grid grid-cols-1 grid-rows-2 gap-3 h-full">
-        <div class="h-3/6">
-          <h1 class="text-xl text-center mb-2">Feladatok</h1>
-        </div>
-      </div>
-    </div>
   </div>
 </main>
