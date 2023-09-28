@@ -5,6 +5,7 @@ export const load = (async ({ params }) => {
   const news = await pb.collection('news').getOne(params.id);
   const author = await pb.collection('users').getOne(news.author);
   const author_name = author.name;
+  const author_avatar = pb.files.getUrl(author, author.avatar);
 
   // Format the created date to be yyyy.mm.dd
   const createdDate = new Date(news.created);
@@ -14,6 +15,7 @@ export const load = (async ({ params }) => {
     title: news.title,
     body: news.body,
     author: author_name,
+    authorAvatar: author_avatar,
     image: pb.files.getUrl(news, news.image),
     created: formattedCreatedDate // Use the formatted date
   };
