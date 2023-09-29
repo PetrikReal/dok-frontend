@@ -13,7 +13,9 @@
 <div>
   <h1 class="text-xl text-center mb-2">Feladatok</h1>
   {#await fetch_assigned_tasks()}
-    <p>loading...</p>
+    <p>
+      loading...
+    </p>
   {:then}
     <div class="h-3/6">
       <h1 class="text-xl text-center mb-2">Feladataim</h1>
