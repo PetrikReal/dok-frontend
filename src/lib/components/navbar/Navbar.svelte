@@ -10,7 +10,7 @@
   <Icon />
 
   {#if $page.url.pathname == '/'}
-  <div class="py-2 flex flex-row rounded-full border-2 border-white">
+  <div class="py-2 flex flex-row rounded-full border-2 border-white md:visible hidden">
     {#if $tab == 0}
     <p class="mx-2 bg-zinc-950 p-1 px-1.5 rounded-full">News</p>
     {:else}

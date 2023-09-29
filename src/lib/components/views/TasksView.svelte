@@ -17,7 +17,7 @@
       loading...
     </p>
   {:then}
-    <div class="h-3/6">
+    <div class="h-3/6 md:w-[35rem] xl:w-2/4 mx-auto">
       <h1 class="text-xl text-center mb-2">Feladataim</h1>
 
       <div class="flex flex-col">
