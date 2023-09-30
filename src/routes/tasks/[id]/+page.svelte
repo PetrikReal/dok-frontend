@@ -9,7 +9,7 @@
 
   export let data: PageData;
 
-  interface PageData { 
+  interface PageData {
     title: string;
     body: string;
     authorAvatar: string;
