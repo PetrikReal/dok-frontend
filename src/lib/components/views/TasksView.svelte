@@ -12,8 +12,8 @@
 
 <div>
   {#await fetch_assigned_tasks()}
-    <p>
-      loading...
+    <p class="text-center p-4">
+      Betöltés...
     </p>
   {:then}
     <div class="h-3/6 md:w-[35rem] xl:w-2/4 mx-auto">
@@ -26,6 +26,6 @@
       </div>
     </div>
   {:catch error}
-    <p>Cannot get your tasks :c ERROR: {error}</p>
+    <p>Nem sikerült a feladatok betöltése: {error}</p>
   {/await}
 </div>
