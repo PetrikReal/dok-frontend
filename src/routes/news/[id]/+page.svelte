@@ -9,6 +9,15 @@
 
   export let data: PageData;
 
+  interface PageData { 
+    title: string;
+    body: string;
+    authorAvatar: string;
+    author: string;
+    image: string;
+    created: string;
+  }
+
   onMount(async () => {
     if (!$currentUser) {
       goto('/');
@@ -24,7 +33,11 @@
         <div class="bg-zinc-800 p-4 my-5 rounded-lg text-white overflow-y-auto">
           <img src={data.image} alt="" class="h-72 w-full rounded-lg object-cover" />
           <div class="flex flex-row">
-            <img src={data.authorAvatar} class="w-12 h-12 mt-3 mr-3 rounded-full object-cover" alt="" />
+            <img
+              src={data.authorAvatar}
+              class="w-12 h-12 mt-3 mr-3 rounded-full object-cover"
+              alt=""
+            />
             <div class="mt-3">
               <p class="text-lg">{data.author}</p>
               <p>{data.created}</p>

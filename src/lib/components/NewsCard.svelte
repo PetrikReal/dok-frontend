@@ -7,13 +7,11 @@
   export let created: string;
   export let authorAvatar: string;
 
-  import { pb } from "$lib/pocketbase";
-
   // truncate body to 100 characters
   body = body.slice(0, 400) + '...';
 
   href = `/news/${href}`;
-  console.log(created)
+  console.log(created);
 </script>
 
 <div class="w-full bg-zinc-900 p-3 rounded-lg mb-3 last:mb-0 flex flex-col">
@@ -35,7 +33,11 @@
               <h1 class="text-md">{author}</h1>
               <h1 class="text-md">{created}</h1>
             </div>
-            <img src={authorAvatar} alt="Author avatar" class="w-12 h-12 ml-3 mr-5 rounded-full object-cover" />  
+            <img
+              src={authorAvatar}
+              alt="Author avatar"
+              class="w-12 h-12 ml-3 mr-5 rounded-full object-cover"
+            />
           </div>
         </div>
       </div>

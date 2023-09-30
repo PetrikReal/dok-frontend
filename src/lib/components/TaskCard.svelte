@@ -20,7 +20,7 @@
         <h1 class="text-xl font-medium text-teal-500">
           {new Date(due_date).toLocaleDateString()}
         </h1>
-        <iconify-icon icon="uiw:date" class="ml-2 text-teal-500"/>
+        <iconify-icon icon="uiw:date" class="ml-2 text-teal-500" />
       </div>
     </div>
     <hr />

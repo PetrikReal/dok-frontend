@@ -17,7 +17,9 @@
   {#if $currentUser}
     <Navbar />
     {#if $currentUser.isSetup}
-      <div class="py-2 flex flex-row rounded-full border-2 border-white visible md:hidden w-fit mx-auto mt-4">
+      <div
+        class="py-2 flex flex-row rounded-full border-2 border-white visible md:hidden w-fit mx-auto mt-4"
+      >
         {#if $tab == 0}
           <p class="mx-2 bg-zinc-950 p-1 px-1.5 rounded-full">News</p>
         {:else}
