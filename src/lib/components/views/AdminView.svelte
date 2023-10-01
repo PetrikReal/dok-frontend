@@ -50,14 +50,6 @@
               {truncate_to(task.body, 45)}
             </p>
           </a>
-          <button
-              class="bg-rose-600 text-white p-3 self-center rounded-lg w-full transition hover:bg-rose-700"
-              on:click={() => {
-                pb.collection('tasks').delete(task.id);
-              }}
-            >
-              Törlés
-            </button>
         {/each}
       {:catch error}
         <p>Nem sikerült a feladatok betöltése: {error}</p>
