@@ -16,6 +16,7 @@
 
   import { tabStore } from '$lib/tabstore';
   import TasksView from '$lib/components/views/TasksView.svelte';
+  import AllTasksView from '$lib/components/views/AllTasksView.svelte';
   const { tab } = tabStore;
 </script>
 
@@ -62,7 +63,7 @@
       {:else if $tab == 1}
         <TasksView />
       {:else}
-        <p>My tasks :3</p>
+        <AllTasksView />
       {/if}
     {:else}
       <SetupModal />
