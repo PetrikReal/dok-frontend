@@ -1,3 +1,9 @@
+<svelte:head>
+	<title>
+    {data.title}
+  </title>
+</svelte:head>
+
 <script lang="ts">
   import { currentUser } from '$lib/pocketbase';
   import Login from '$lib/components/views/Login.svelte';

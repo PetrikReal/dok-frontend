@@ -1,3 +1,9 @@
+<svelte:head>
+	<title>
+    DÖKWeb
+  </title>
+</svelte:head>
+
 <script lang="ts">
   import Navbar from '$lib/components/navbar/Navbar.svelte';
   import Login from '$lib/components/views/Login.svelte';
