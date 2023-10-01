@@ -11,10 +11,12 @@
   let due_date: Date = new Date();
 
   const checkInputs = () => {
-    disabled = !(title.length != 0);
-    disabled = !(body.length != 0);
+    if (body.length <= 0 || title.length <= 0) {
+      disabled = true
+    }
     console.log(disabled);
   };
+  checkInputs()
 
   const createTask = async () => {
     pb.collection('tasks').create({
