@@ -11,7 +11,7 @@
   <Icon />
 
   {#if $page.url.pathname == '/'}
-    <div class="py-2 flex-row rounded-full border-2 border-white hidden md:flex">
+    <div class="py-2 flex-row rounded-full border-2 border-zinc-600 hidden md:flex">
       {#if $tab == 0}
         <p class="mx-2 bg-zinc-950 p-1 px-1.5 rounded-full">Hírek</p>
       {:else}

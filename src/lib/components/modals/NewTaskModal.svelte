@@ -1,9 +1,12 @@
 <script lang="ts">
   import { Modal } from '@svelteuidev/core';
   import { pb, currentUser } from '$lib/pocketbase';
+  import { createEventDispatcher } from 'svelte';
   import 'iconify-icon';
 
-  let opened = true;
+  const dispatch = createEventDispatcher();
+
+  export let opened = true;
   let disabled = false;
 
   let title = '';
@@ -12,11 +15,14 @@
 
   const checkInputs = () => {
     if (body.length <= 0 || title.length <= 0) {
-      disabled = true
+      disabled = true;
+      console.log('asd');
+    } else {
+      disabled = false;
     }
     console.log(disabled);
   };
-  checkInputs()
+  checkInputs();
 
   const createTask = async () => {
     pb.collection('tasks').create({
@@ -27,6 +33,8 @@
       isOpen: true,
       isComplete: false
     });
+
+    dispatch('task-created');
   };
 </script>
 
