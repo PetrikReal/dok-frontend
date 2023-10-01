@@ -2,6 +2,7 @@
     import { pb } from "$lib/pocketbase";
     import { truncate_to } from "$lib/truncate";
     import type { RecordModel } from "pocketbase";
+    import NewTaskModal from "../modals/NewTaskModal.svelte";
 
     let authored_tasks: RecordModel[] = [];
     const fetch_authored_tasks = async () => {
@@ -17,6 +18,9 @@
   <div class="p-2">
     <button
       class="px-3 p-2 bg-emerald-600 text-white font-medium rounded-lg flex-col flex mx-auto"
+      on:click={() => {
+        new NewTaskModal({target: document.body})
+      }}
       >Feladat létrehozása</button
     >
 
