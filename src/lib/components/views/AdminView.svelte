@@ -1,6 +1,6 @@
 <script lang="ts">
   import { pb } from '$lib/pocketbase';
-  import { truncate_to } from '$lib/truncate';
+  import AdminTaskCard from '../AdminTaskCard.svelte';
   import type { RecordModel } from 'pocketbase';
   import NewTaskModal from '../modals/NewTaskModal.svelte';
 
@@ -38,18 +38,7 @@
         <p class="text-center p-4">Betöltés...</p>
       {:then}
         {#each authored_tasks as task}
-          <a
-            href={`/tasks/${task.id}`}
-            class="flex flex-col p-2 hover:bg-zinc-800 border-t border-zinc-400"
-          >
-            <div class="flex justify-between font-semibold text-xl">
-              <h1>{truncate_to(task.title, 25)}</h1>
-              <h1 class="text-emerald-500">{new Date(task.due_date).toLocaleDateString()}</h1>
-            </div>
-            <p>
-              {truncate_to(task.body, 45)}
-            </p>
-          </a>
+        <AdminTaskCard on:task-deleted={async () => { await fetch_authored_tasks() }} id={task.id} body={task.body} title={task.title} due_date={task.due_date}></AdminTaskCard>
         {/each}
       {:catch error}
         <p>Nem sikerült a feladatok betöltése: {error}</p>
