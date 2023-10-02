@@ -3,8 +3,12 @@
   import AdminTaskCard from '../AdminTaskCard.svelte';
   import type { RecordModel } from 'pocketbase';
   import NewTaskModal from '../modals/NewTaskModal.svelte';
+  import DeleteTaskModal from '../modals/DeleteTaskModal.svelte';
 
   let create_task_open = false;
+  let delete_task_open = false;
+  let delete_task_id = '';
+  let delete_task_title = '';
 
   let authored_tasks: RecordModel[] = [];
   const fetch_authored_tasks = async () => {
@@ -13,8 +17,23 @@
       filter: `author.id ?= "${pb.authStore.model.id}"`
     });
   };
+
+  const openDeleteTaskModal = (event: any) => {
+    delete_task_id = event.detail.id;
+    delete_task_title = event.detail.title;
+    delete_task_open = true;
+  };
 </script>
 
+<DeleteTaskModal
+  opened={delete_task_open}
+  id={delete_task_id}
+  title={delete_task_title}
+  on:deleted-task={async () => {
+    await fetch_authored_tasks();
+    delete_task_open = false;
+  }}
+/>
 <NewTaskModal
   opened={create_task_open}
   on:task-created={async () => {
@@ -38,7 +57,16 @@
         <p class="text-center p-4">Betöltés...</p>
       {:then}
         {#each authored_tasks as task}
-        <AdminTaskCard on:task-deleted={async () => { await fetch_authored_tasks() }} id={task.id} body={task.body} title={task.title} due_date={task.due_date}></AdminTaskCard>
+          <AdminTaskCard
+            on:delete-task={openDeleteTaskModal}
+            on:task-deleted={async () => {
+              await fetch_authored_tasks();
+            }}
+            id={task.id}
+            body={task.body}
+            title={task.title}
+            due_date={task.due_date}
+          />
         {/each}
       {:catch error}
         <p>Nem sikerült a feladatok betöltése: {error}</p>

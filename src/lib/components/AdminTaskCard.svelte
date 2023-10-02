@@ -29,7 +29,7 @@
       {truncate_to(body, 45)}
     </p>
   </a>
-  <button class="text-red-400 w-[5rem] hover:bg-red-400 hover:text-zinc-800" on:click={deleteTask}>
+  <button class="text-red-400 w-[5rem] hover:bg-red-400 hover:text-zinc-800" on:click={() => dispatch('delete-task', {id: id, title: title})}>
     <iconify-icon icon="mdi:trash" style="font-size: xx-large;" />
   </button>
 </div>
