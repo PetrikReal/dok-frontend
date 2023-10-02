@@ -26,6 +26,9 @@
 </script>
 
 <DeleteTaskModal
+  on:close={() => {
+    delete_task_open = false;
+  }}
   opened={delete_task_open}
   id={delete_task_id}
   title={delete_task_title}

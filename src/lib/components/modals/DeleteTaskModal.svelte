@@ -24,7 +24,7 @@
     <button
       class="bg-emerald-600 disabled:bg-emerald-950 disabled:hover:bg-emerald-950 disabled:cursor-not-allowed text-white p-2 rounded-lg mt-3 w-full transition hover:bg-emerald-700"
       on:click={() => {
-        opened = false;
+          dispatch('close')
       }}
     >
       Mégse
