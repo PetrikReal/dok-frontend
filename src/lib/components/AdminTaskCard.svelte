@@ -29,10 +29,16 @@
       {truncate_to(body, 45)}
     </p>
   </a>
-  <button class="text-teal-400 w-[5.7rem] hover:bg-teal-500 hover:text-zinc-800 border-r border-zinc-400" on:click={() => dispatch('edit-task', {id: id, title: title, body: body, due_date: due_date})}>
+  <button
+    class="text-teal-400 w-[5.7rem] hover:bg-teal-500 hover:text-zinc-800 border-r border-zinc-400"
+    on:click={() => dispatch('edit-task', { id: id, title: title, body: body, due_date: due_date })}
+  >
     <iconify-icon icon="mdi:pencil" style="font-size: xx-large;" />
   </button>
-  <button class="text-red-400 w-[5.7rem] hover:bg-red-400 hover:text-zinc-800" on:click={() => dispatch('delete-task', {id: id, title: title})}>
+  <button
+    class="text-red-400 w-[5.7rem] hover:bg-red-400 hover:text-zinc-800"
+    on:click={() => dispatch('delete-task', { id: id, title: title })}
+  >
     <iconify-icon icon="mdi:trash" style="font-size: xx-large;" />
   </button>
 </div>

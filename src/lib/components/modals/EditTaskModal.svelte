@@ -20,7 +20,7 @@
       body: body
     };
     const record = await pb.collection('tasks').update(id, data);
-    dispatch('task-edited')
+    dispatch('task-edited');
   };
 </script>
 
