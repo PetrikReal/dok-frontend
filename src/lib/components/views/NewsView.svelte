@@ -10,7 +10,7 @@
 
 <main class="flex justify-center">
   <div class="max-w-5xl">
-    <div class="bg-zinc-800 p-4 my-5 rounded-lg text-white overflow-auto h-[40rem] 2xl:h-[50rem]">
+    <div class="bg-zinc-800 p-4 my-5 rounded-lg text-white overflow-auto h-[37rem] 2xl:h-[50rem]">
       {#each news as item}
         <NewsCard
           title={item.title}

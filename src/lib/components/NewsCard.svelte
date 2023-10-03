@@ -7,7 +7,7 @@
   export let created: string;
   export let authorAvatar: string;
 
-  // truncate body to 100 characters
+  // truncate body to 400 characters
   body = body.slice(0, 400) + '...';
 
   href = `/news/${href}`;
