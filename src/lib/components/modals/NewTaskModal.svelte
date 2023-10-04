@@ -12,6 +12,7 @@
   let title = '';
   let body = '';
   let due_date: Date = new Date();
+  let isOpen: boolean = false;
 
   const checkInputs = () => {
     if (body.length <= 0 || title.length <= 0) {
@@ -25,12 +26,12 @@
   checkInputs();
 
   const createTask = async () => {
-    pb.collection('tasks').create({
+    await pb.collection('tasks').create({
       title: title,
       body: body,
       author: $currentUser.id,
       due_date: due_date,
-      isOpen: true,
+      isOpen: isOpen,
       isComplete: false
     });
 
@@ -69,6 +70,8 @@
     placeholder="Határidő"
     class="bg-zinc-700 w-full mb-2 p-2 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-emerald-600"
   />
+  <label for="is-open">Nyittot?</label>
+  <input type="checkbox" bind:value={isOpen} name="is-open" />
 
   <div class="flex flex-row gap-3">
     <button

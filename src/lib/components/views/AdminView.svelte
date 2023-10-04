@@ -15,9 +15,6 @@
   // If any one of u touches these varibles i will cut ur pp :3 (i will make em disappear soon just wait my little buddies)
   let edit_task_open = false;
   let edit_task_id = '';
-  let edit_task_title = '';
-  let edit_task_body = '';
-  let edit_task_due_date: Date;
 
   let authored_tasks: RecordModel[] = [];
   const fetch_authored_tasks = async () => {
@@ -29,9 +26,6 @@
 
   const openEditTaskModal = (event: any) => {
     edit_task_id = event.detail.id;
-    edit_task_title = event.detail.title;
-    edit_task_body = event.detail.body;
-    edit_task_due_date = event.detail.due_date;
     edit_task_open = true;
   };
 
@@ -49,9 +43,6 @@
   }}
   opened={edit_task_open}
   id={edit_task_id}
-  due_date={edit_task_due_date}
-  body={edit_task_body}
-  title={edit_task_title}
   on:closed={() => {
     edit_task_open = false;
   }}
