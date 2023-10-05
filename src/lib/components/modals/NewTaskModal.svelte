@@ -51,15 +51,7 @@
     class="bg-zinc-700 w-full mb-2 p-2 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-emerald-600"
   />
   <label for="body">Szöveg</label>
-  <input
-    type="text"
-    name="body"
-    id="body-inp"
-    bind:value={body}
-    on:input={checkInputs}
-    placeholder="Szöveg"
-    class="bg-zinc-700 w-full mb-2 p-2 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-emerald-600"
-  />
+  <textarea id="large-text" name="large-text" rows="5" cols="40" class="p-3 bg-zinc-700" bind:value={body} />
   <label for="due-date">Határidő</label>
   <input
     type="date"
