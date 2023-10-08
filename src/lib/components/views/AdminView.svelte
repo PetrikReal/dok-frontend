@@ -60,6 +60,9 @@
   }}
 />
 <NewTaskModal
+  on:closed={() => {
+    create_task_open = false;
+  }}
   opened={create_task_open}
   on:task-created={async () => {
     await fetch_authored_tasks();
