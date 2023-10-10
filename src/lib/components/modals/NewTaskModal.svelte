@@ -41,7 +41,7 @@
     });
 
     if (index !== -1) {
-      assignese = assignese.splice(index, 1);
+      assignese = assignese.filter(uid => uid !== id);
       console.log(assignese)
       console.log('Item deleted: ' + id);
     } else {
