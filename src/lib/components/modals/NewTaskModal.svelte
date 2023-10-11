@@ -41,8 +41,8 @@
     });
 
     if (index !== -1) {
-      assignese = assignese.filter(uid => uid !== id);
-      console.log(assignese)
+      assignese = assignese.filter((uid) => uid !== id);
+      console.log(assignese);
       console.log('Item deleted: ' + id);
     } else {
       console.log('Item not found: ' + id);
