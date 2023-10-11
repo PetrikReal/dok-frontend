@@ -49,6 +49,7 @@
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const fetchUser = async (fullName: string) => {
     userQuery = await pb
       .collection('users')
