@@ -1,7 +1,7 @@
 <script lang="ts">
   import { truncate_to } from '$lib/truncate';
   import { createEventDispatcher } from 'svelte';
-  import { pb } from '$lib/pocketbase';
+  // import { pb } from '$lib/pocketbase';
 
   const dispatch = createEventDispatcher();
 
@@ -10,10 +10,10 @@
   export let title: string;
   export let due_date: string;
 
-  const deleteTask = async () => {
-    await pb.collection('tasks').delete(id);
-    dispatch('task-deleted');
-  };
+  // const deleteTask = async () => {
+  //   await pb.collection('tasks').delete(id);
+  //   dispatch('task-deleted');
+  // };
 </script>
 
 <div class="flex border-t border-zinc-400">

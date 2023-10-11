@@ -24,11 +24,13 @@
     });
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const openEditTaskModal = (event: any) => {
     edit_task_id = event.detail.id;
     edit_task_open = true;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const openDeleteTaskModal = (event: any) => {
     delete_task_id = event.detail.id;
     delete_task_title = event.detail.title;

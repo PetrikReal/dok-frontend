@@ -33,6 +33,7 @@
   let namesearch: string = '';
   let userQuery: RecordModel[] = [];
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const fetchUser = async (fullName: string) => {
     userQuery = await pb
       .collection('users')
