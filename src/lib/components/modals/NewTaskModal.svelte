@@ -33,7 +33,22 @@
   let namesearch: string = '';
   let userQuery: RecordModel[] = [];
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const deleteAssignedUser = (event: CustomEvent<{ id: string }>) => {
+    let id = event.detail.id;
+
+    let index = assignese.findIndex((item: string) => {
+      return item === id;
+    });
+
+    if (index !== -1) {
+      assignese = assignese.filter(uid => uid !== id);
+      console.log(assignese)
+      console.log('Item deleted: ' + id);
+    } else {
+      console.log('Item not found: ' + id);
+    }
+  };
+
   const fetchUser = async (fullName: string) => {
     userQuery = await pb
       .collection('users')
@@ -95,7 +110,7 @@
       <p class="text-center">Nincs hozzárendelve senki</p>
     {/if}
     {#each assignese as id (id)}
-      <UserChip {id} />
+      <UserChip {id} on:delete={deleteAssignedUser} />
     {/each}
   </ul>
 
