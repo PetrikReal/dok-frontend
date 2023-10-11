@@ -1,8 +1,8 @@
 <script lang="ts">
   import { pb } from '$lib/pocketbase';
   import type { RecordModel } from 'pocketbase';
-  import {createEventDispatcher} from 'svelte';
-  
+  import { createEventDispatcher } from 'svelte';
+
   const dispatch = createEventDispatcher();
 
   export let id: string;
@@ -29,9 +29,8 @@
     <button
       class="text-red-400 h-10 w-10 flex items-center text-3xl hover:bg-red-400 hover:text-zinc-800 rounded-full"
       on:click={() => {
-        dispatch('delete', { id: user.id })
-      }}
-      ><iconify-icon icon="ph:x" class="mx-auto" /></button
+        dispatch('delete', { id: user.id });
+      }}><iconify-icon icon="ph:x" class="mx-auto" /></button
     >
   </div>
 {:catch error}
