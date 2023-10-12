@@ -47,9 +47,10 @@
   <p class="text-3xl">{count}/{target}</p>
   <img src={boti} class="h-96 m-3 rounded-lg" alt="boti" />
   <button
-    class="h-14 text-xl bg-green-500 text-white px-2 rounded-lg shadow-lg absolute top-0 left-0 z-50"
+    class="h-14 text-xl bg-green-500 text-white px-2 rounded-lg shadow-lg absolute top-0 left-0 z-50 select-none"
     style={botiStyle}
     on:click={updateCount}
+    tabindex="-1"
   >
     Még!
   </button>
